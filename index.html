@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <link rel="stylesheet" href="threePhotos.css">
+  <script>
+    var correct = 0;
+    var breaker = "<br>";
+    var answers=[];
+    var key =["nike", "target","instagram"];
+    var i = 0;
+    var count =0;
+    var logos = ["<img src='nike.png'>", "<img src='Target.png'>", "<img src='instagram.jpg'>"];
+    function play()
+    {
+
+
+
+        document.getElementById('output').innerHTML=logos[i];
+
+
+
+
+    }
+
+    function guess()
+    {
+      answers[count] = document.getElementById('answer').value;
+      i++;
+      count++;
+
+      if(key.length == answers.length || answers.length>=logos.length)
+      {
+        compare(key, answers);
+      } else {
+
+          play();
+      }
+    }
+
+    function compare(x,y)
+    {
+      for(var i = 0; i<x.length;i++)
+      {
+        if(x[i]==y[i])
+        {
+
+          correct++;
+
+        }
+      }
+
+
+        document.getElementById('output').innerHTML="You got " + correct+" correct"+breaker+" Refresh the page to play again!";
+        return;
+
+    }
+
+
+  </script>
+  <body onload="play()">
+    <header id="title">Guess the Logo Game!</header>
+    <p id="instructions">To play this game, type in the name of the company whose logo appears.</p>
+    <br>
+    <br>
+    <span id='output'></span>
+    <br>
+    <input id ="answer" type="text" value="enter the answer here" >
+    <br>
+    <input id="button" type="button" value="enter" onclick="guess()">
+
+  </body>
+</html>
